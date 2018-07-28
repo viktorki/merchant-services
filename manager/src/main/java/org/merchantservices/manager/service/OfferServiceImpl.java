@@ -19,7 +19,7 @@ public class OfferServiceImpl implements OfferService {
 	private OfferRepository offerRepository;
 
 	@Override
-	public Offer getOffer(String id) {
+	public Offer getOffer(long id) {
 		Optional<Offer> offer = offerRepository.findById(id);
 
 		if (offer.isPresent()) {
@@ -47,7 +47,7 @@ public class OfferServiceImpl implements OfferService {
 	}
 
 	@Override
-	public Offer cancelOffer(String id) {
+	public Offer cancelOffer(long id) {
 		Offer offer = getOffer(id);
 
 		if (offer.getCancelDate() != null) {

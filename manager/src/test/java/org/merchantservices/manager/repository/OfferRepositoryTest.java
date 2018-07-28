@@ -10,16 +10,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.merchantservices.manager.entity.Offer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@DataMongoTest
+@DataJpaTest
 public class OfferRepositoryTest {
 
 	@Autowired
-	private MongoTemplate mongoTemplate;
+	private TestEntityManager entityManager;
 
 	@Autowired
 	private OfferRepository offerRepository;
@@ -27,7 +27,7 @@ public class OfferRepositoryTest {
 	@Before
 	public void before() {
 		final Calendar c = Calendar.getInstance();
-		c.add(Calendar.MONTH, -1);
+		c.add(Calendar.MONTH, 1);
 		final Date date1 = c.getTime();
 		c.add(Calendar.MONTH, 2);
 		final Date date2 = c.getTime();
@@ -48,15 +48,18 @@ public class OfferRepositoryTest {
 		offer3.setExpiryDate(date2);
 		offer3.setCancelDate(new Date());
 
-		mongoTemplate.remove(Offer.class).all();
-		mongoTemplate.save(offer1);
-		mongoTemplate.save(offer2);
-		mongoTemplate.save(offer3);
+		entityManager.persist(offer1);
+		entityManager.persist(offer2);
+		entityManager.persist(offer3);
 	}
 
 	@Test
 	public void testFindByCancelDateIsNullAndExpiryDateGreaterThan() {
-		List<Offer> offers = offerRepository.findByCancelDateIsNullAndExpiryDateGreaterThan(new Date());
+		final Calendar c = Calendar.getInstance();
+		c.add(Calendar.MONTH, 2);
+		final Date date = c.getTime();
+
+		List<Offer> offers = offerRepository.findByCancelDateIsNullAndExpiryDateGreaterThan(date);
 
 		Assert.assertEquals(1, offers.size());
 		Assert.assertEquals("Test title 2", offers.get(0).getTitle());
@@ -64,7 +67,11 @@ public class OfferRepositoryTest {
 
 	@Test
 	public void testFindByCancelDateIsNotNullOrExpiryDateLessThan() {
-		List<Offer> offers = offerRepository.findByCancelDateIsNotNullOrExpiryDateLessThan(new Date());
+		final Calendar c = Calendar.getInstance();
+		c.add(Calendar.MONTH, 2);
+		final Date date = c.getTime();
+
+		List<Offer> offers = offerRepository.findByCancelDateIsNotNullOrExpiryDateLessThan(date);
 
 		Assert.assertEquals(2, offers.size());
 		Assert.assertNotEquals("Test title 2", offers.get(0).getTitle());

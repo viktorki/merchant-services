@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.merchantservices.manager.entity.Offer;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface OfferRepository extends MongoRepository<Offer, String> {
+public interface OfferRepository extends CrudRepository<Offer, Long> {
 
 	List<Offer> findByCancelDateIsNullAndExpiryDateGreaterThan(Date expiryDate);
 

@@ -41,7 +41,7 @@ public class OfferServiceImplTest {
 
 	@Test
 	public void testGetOffer() {
-		final String id = "1001";
+		final long id = 1001;
 		final Offer offerExpected = Mockito.mock(Offer.class);
 
 		Mockito.when(offerRepository.findById(id)).thenReturn(Optional.of(offerExpected));
@@ -53,7 +53,7 @@ public class OfferServiceImplTest {
 
 	@Test(expected = OfferNotFoundException.class)
 	public void testGetNotExistingOffer() {
-		final String id = "1002";
+		final long id = 1002;
 
 		Mockito.when(offerRepository.findById(id)).thenReturn(Optional.empty());
 
@@ -99,7 +99,7 @@ public class OfferServiceImplTest {
 
 	@Test
 	public void testCancelOffer() {
-		final String id = "1003";
+		final long id = 1003;
 		final Calendar c = Calendar.getInstance();
 		c.add(Calendar.MONTH, 1);
 		final Date expiryDate = c.getTime();
@@ -116,9 +116,18 @@ public class OfferServiceImplTest {
 		Assert.assertEquals(cancelledOfferExpected, cancelledOffer);
 	}
 
+	@Test(expected = OfferNotFoundException.class)
+	public void testCancelNotExistingOffer() {
+		final long id = 1004;
+
+		Mockito.when(offerRepository.findById(id)).thenReturn(Optional.empty());
+
+		offerService.cancelOffer(id);
+	}
+
 	@Test(expected = OfferCancelledException.class)
 	public void testCancelAlreadyCancelledOffer() {
-		final String id = "1004";
+		final long id = 1005;
 		final Offer offer = Mockito.mock(Offer.class);
 
 		Mockito.when(offer.getCancelDate()).thenReturn(new Date());
@@ -129,7 +138,7 @@ public class OfferServiceImplTest {
 
 	@Test(expected = OfferExpiredException.class)
 	public void testCancelExpiredOffer() {
-		final String id = "1005";
+		final long id = 1006;
 		final Calendar c = Calendar.getInstance();
 		c.add(Calendar.MONTH, -1);
 		final Date expiryDate = c.getTime();

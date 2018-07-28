@@ -19,7 +19,7 @@ public class OfferDTO {
 		cancelDate = offer.getCancelDate();
 	}
 
-	private String id;
+	private long id;
 
 	private String title;
 
@@ -33,11 +33,11 @@ public class OfferDTO {
 	@JsonFormat(pattern = Constants.DATE_FORMAT)
 	private Date cancelDate;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

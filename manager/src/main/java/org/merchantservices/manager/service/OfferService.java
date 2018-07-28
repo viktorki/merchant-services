@@ -6,7 +6,7 @@ import org.merchantservices.manager.entity.Offer;
 
 public interface OfferService {
 
-	Offer getOffer(String id);
+	Offer getOffer(long id);
 
 	List<Offer> getActiveOffers();
 
@@ -14,5 +14,5 @@ public interface OfferService {
 
 	Offer saveOffer(Offer offer);
 
-	Offer cancelOffer(String id);
+	Offer cancelOffer(long id);
 }

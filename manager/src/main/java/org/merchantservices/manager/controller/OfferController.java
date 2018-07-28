@@ -27,7 +27,7 @@ public class OfferController {
 	private OfferService offerService;
 
 	@GetMapping(value = "{id}")
-	public Offer getOffer(@PathVariable String id) {
+	public Offer getOffer(@PathVariable long id) {
 		return offerService.getOffer(id);
 	}
 
@@ -48,7 +48,7 @@ public class OfferController {
 	}
 
 	@DeleteMapping(value = "{id}")
-	public void cancelOffer(@PathVariable String id) {
+	public void cancelOffer(@PathVariable long id) {
 		offerService.cancelOffer(id);
 	}
 }
