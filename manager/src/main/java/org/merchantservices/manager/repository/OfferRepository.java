@@ -8,5 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface OfferRepository extends MongoRepository<Offer, String> {
 
-	public List<Offer> findByExpiryDateGreaterThanAndCancelled(Date expiryDate, boolean cancelled);
+	List<Offer> findByExpiryDateGreaterThanAndCancelled(Date expiryDate, boolean cancelled);
+
+	List<Offer> findByExpiryDateLessThanOrCancelled(Date expiryDate, boolean cancelled);
 }

@@ -32,6 +32,10 @@ public class OfferService {
 		return offerRepository.findByExpiryDateGreaterThanAndCancelled(new Date(), false);
 	}
 
+	public List<Offer> getArchivedOffers() {
+		return offerRepository.findByExpiryDateLessThanOrCancelled(new Date(), true);
+	}
+
 	public Offer saveOffer(Offer offer) {
 		return offerRepository.save(offer);
 	}

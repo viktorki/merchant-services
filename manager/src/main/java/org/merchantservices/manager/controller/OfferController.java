@@ -34,6 +34,11 @@ public class OfferController {
 		return offerService.getActiveOffers().stream().map(OfferDTO::new).collect(Collectors.toList());
 	}
 
+	@GetMapping("archived")
+	public List<OfferDTO> getArchivedOffers() {
+		return offerService.getArchivedOffers().stream().map(OfferDTO::new).collect(Collectors.toList());
+	}
+
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void saveOffer(@RequestBody Offer offer) {
