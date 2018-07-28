@@ -2,10 +2,16 @@ package org.merchantservices.manager.entity;
 
 import java.util.Date;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.merchantservices.manager.util.Constants;
 import org.springframework.data.annotation.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public class Offer {
 
@@ -18,11 +24,16 @@ public class Offer {
 	@NotBlank
 	private String content;
 
+	@JsonFormat(pattern = Constants.DATE_FORMAT)
 	private Date creationDate;
 
 	@NotNull
+	@Future
+	@JsonFormat(pattern = Constants.DATE_FORMAT)
 	private Date expiryDate;
 
+	@JsonInclude(Include.NON_NULL)
+	@JsonFormat(pattern = Constants.DATE_FORMAT)
 	private Date cancelDate;
 
 	public String getId() {
