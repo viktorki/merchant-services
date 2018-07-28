@@ -18,10 +18,12 @@ public class Offer {
 	@NotBlank
 	private String content;
 
+	private Date creationDate;
+
 	@NotNull
 	private Date expiryDate;
 
-	private boolean cancelled;
+	private Date cancelDate;
 
 	public String getId() {
 		return id;
@@ -47,6 +49,14 @@ public class Offer {
 		this.content = content;
 	}
 
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
 	public Date getExpiryDate() {
 		return expiryDate;
 	}
@@ -55,11 +65,11 @@ public class Offer {
 		this.expiryDate = expiryDate;
 	}
 
-	public boolean isCancelled() {
-		return cancelled;
+	public Date getCancelDate() {
+		return cancelDate;
 	}
 
-	public void setCancelled(boolean cancelled) {
-		this.cancelled = cancelled;
+	public void setCancelDate(Date cancelDate) {
+		this.cancelDate = cancelDate;
 	}
 }

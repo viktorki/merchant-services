@@ -29,21 +29,23 @@ public class OfferService {
 	}
 
 	public List<Offer> getActiveOffers() {
-		return offerRepository.findByExpiryDateGreaterThanAndCancelled(new Date(), false);
+		return offerRepository.findByCancelDateIsNullAndExpiryDateGreaterThan(new Date());
 	}
 
 	public List<Offer> getArchivedOffers() {
-		return offerRepository.findByExpiryDateLessThanOrCancelled(new Date(), true);
+		return offerRepository.findByCancelDateIsNotNullOrExpiryDateLessThan(new Date());
 	}
 
 	public Offer saveOffer(Offer offer) {
+		offer.setCreationDate(new Date());
+
 		return offerRepository.save(offer);
 	}
 
 	public Offer cancelOffer(String id) {
 		Offer offer = getOffer(id);
 
-		if (offer.isCancelled()) {
+		if (offer.getCancelDate() != null) {
 			throw new OfferCancelledException();
 		}
 
@@ -51,7 +53,7 @@ public class OfferService {
 			throw new OfferExpiredException();
 		}
 
-		offer.setCancelled(true);
+		offer.setCancelDate(new Date());
 
 		return offerRepository.save(offer);
 	}
