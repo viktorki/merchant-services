@@ -12,5 +12,4 @@ public class ManagerApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }
