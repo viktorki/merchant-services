@@ -27,8 +27,8 @@ public class OfferController {
 	private OfferService offerService;
 
 	@GetMapping(value = "{id}")
-	public Offer getOffer(@PathVariable long id) {
-		return offerService.getOffer(id);
+	public OfferDTO getOffer(@PathVariable long id) {
+		return new OfferDTO(offerService.getOffer(id));
 	}
 
 	@GetMapping
@@ -43,8 +43,8 @@ public class OfferController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void saveOffer(@Valid @RequestBody Offer offer) {
-		offerService.saveOffer(offer);
+	public void saveOffer(@Valid @RequestBody OfferDTO offerDTO) {
+		offerService.saveOffer(new Offer(offerDTO));
 	}
 
 	@DeleteMapping(value = "{id}")

@@ -6,39 +6,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
-import org.merchantservices.manager.util.Constants;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import org.merchantservices.manager.dto.OfferDTO;
 
 @Entity
 public class Offer {
+
+	public Offer() {
+	}
+
+	public Offer(OfferDTO offerDTO) {
+		title = offerDTO.getTitle();
+		content = offerDTO.getContent();
+		expiryDate = offerDTO.getExpiryDate();
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@NotBlank
 	private String title;
 
-	@NotBlank
 	private String content;
 
-	@JsonFormat(pattern = Constants.DATE_FORMAT)
 	private Date creationDate;
 
-	@NotNull
-	@Future
-	@JsonFormat(pattern = Constants.DATE_FORMAT)
 	private Date expiryDate;
 
-	@JsonInclude(Include.NON_NULL)
-	@JsonFormat(pattern = Constants.DATE_FORMAT)
 	private Date cancelDate;
 
 	public Long getId() {

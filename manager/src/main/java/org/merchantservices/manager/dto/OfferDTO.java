@@ -2,6 +2,10 @@ package org.merchantservices.manager.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.merchantservices.manager.entity.Offer;
 import org.merchantservices.manager.util.Constants;
 
@@ -14,6 +18,7 @@ public class OfferDTO {
 	public OfferDTO(Offer offer) {
 		id = offer.getId();
 		title = offer.getTitle();
+		content = offer.getContent();
 		creationDate = offer.getCreationDate();
 		expiryDate = offer.getExpiryDate();
 		cancelDate = offer.getCancelDate();
@@ -21,11 +26,17 @@ public class OfferDTO {
 
 	private long id;
 
+	@NotBlank
 	private String title;
+
+	@NotBlank
+	private String content;
 
 	@JsonFormat(pattern = Constants.DATE_FORMAT)
 	private Date creationDate;
 
+	@NotNull
+	@Future
 	@JsonFormat(pattern = Constants.DATE_FORMAT)
 	private Date expiryDate;
 
@@ -47,6 +58,14 @@ public class OfferDTO {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public Date getCreationDate() {
