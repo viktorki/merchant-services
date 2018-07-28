@@ -3,6 +3,8 @@ package org.merchantservices.manager.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.merchantservices.manager.dto.OfferDTO;
 import org.merchantservices.manager.entity.Offer;
 import org.merchantservices.manager.service.OfferService;
@@ -41,7 +43,7 @@ public class OfferController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void saveOffer(@RequestBody Offer offer) {
+	public void saveOffer(@Valid @RequestBody Offer offer) {
 		offerService.saveOffer(offer);
 	}
 

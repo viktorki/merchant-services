@@ -2,6 +2,9 @@ package org.merchantservices.manager.entity;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 
 public class Offer {
@@ -9,10 +12,13 @@ public class Offer {
 	@Id
 	private String id;
 
+	@NotBlank
 	private String title;
 
+	@NotBlank
 	private String content;
 
+	@NotNull
 	private Date expiryDate;
 
 	private boolean cancelled;
