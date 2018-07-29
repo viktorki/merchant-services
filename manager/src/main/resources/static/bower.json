@@ -9,7 +9,6 @@
     "angular-route": "1.5.x",
     "jquery": "3.2.x",
     "bootstrap": "4.0.x",
-    "bootstrap-datepicker": "1.8.0",
 	"components-font-awesome": "5.0.x"
   }
 }
