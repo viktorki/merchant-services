@@ -15,6 +15,9 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public class OfferDTO {
 
+	public OfferDTO() {
+	}
+
 	public OfferDTO(Offer offer) {
 		id = offer.getId();
 		title = offer.getTitle();
