@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row justify-content-md-center">
+    <div class="col col-md-7">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input ng-model="$ctrl.offer.title" class="form-control form-control-lg" id="title" placeholder="Enter offer title" />
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col col-md-7">
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea ng-model="$ctrl.offer.content" class="form-control" id="content" placeholder="Enter offer content" rows="10">
+        </textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col col-md-7">
+      <div class="form-group">
+        <label for="expiryDate">Expiry Date</label>
+        <input ng-model="$ctrl.offer.expiryDate" class="form-control" id="expiryDate" placeholder="dd/MM/yyyy HH:mm" />
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col col-md-7">
+      <div class="form-group">
+        <a href="#!/" class="btn btn-default">Cancel</a>
+        <button ng-click="$ctrl.saveOffer()" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

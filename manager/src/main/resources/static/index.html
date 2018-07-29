@@ -1,1 +1,39 @@
+<!doctype html>
+<html lang="en" ng-app="offerManagerApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Merchant Services Offer Manager</title>
+	<link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/fontawesome-all.min.css" />
     <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.slim.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="navbar/navbar.module.js"></script>
+    <script src="navbar/navbar.component.js"></script>
+    <script src="core/core.module.js"></script>
+    <script src="core/offer/offer.module.js"></script>
+    <script src="core/offer/offer.service.js"></script>
+    <script src="active-offers/active-offers.module.js"></script>
+    <script src="active-offers/active-offers.component.js"></script>
+    <script src="archived-offers/archived-offers.module.js"></script>
+    <script src="archived-offers/archived-offers.component.js"></script>
+    <script src="add-offer/add-offer.module.js"></script>
+    <script src="add-offer/add-offer.component.js"></script>
+    <script src="view-offer/view-offer.module.js"></script>
+    <script src="view-offer/view-offer.component.js"></script>
+    <script src="cancel-offer/cancel-offer.module.js"></script>
+    <script src="cancel-offer/cancel-offer.component.js"></script>
+  </head>
+  <body>
+    <navbar></navbar>
+    <main role="main">
+    	<ng-view></ng-view>
+    </main>
+  </body>
+</html>
