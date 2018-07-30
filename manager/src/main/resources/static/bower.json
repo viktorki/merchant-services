@@ -4,11 +4,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "1.5.x",
-	"angular-resource": "1.5.x",
-    "angular-route": "1.5.x",
-    "jquery": "3.2.x",
-    "bootstrap": "4.0.x",
-	"components-font-awesome": "5.0.x"
+  "angular": "1.5.x",
+  "angular-resource": "1.5.x",
+  "angular-route": "1.5.x",
+  "jquery": "3.2.x",
+  "bootstrap": "4.0.x",
+  "angular-bootstrap": "2.4.x",
+  "components-font-awesome": "5.0.x"
   }
 }
