@@ -29,17 +29,17 @@ public class OfferDTO {
 
 	private long id;
 
-	@NotBlank
+	@NotBlank(message = "Title should not be left blank!")
 	private String title;
 
-	@NotBlank
+	@NotBlank(message = "Content should not be left blank!")
 	private String content;
 
 	@JsonFormat(pattern = Constants.DATE_FORMAT)
 	private Date creationDate;
 
-	@NotNull
-	@Future
+	@NotNull(message = "Expiry date should not be left empty!")
+	@Future(message = "Expry date cannot be in the past!")
 	@JsonFormat(pattern = Constants.DATE_FORMAT)
 	private Date expiryDate;
 

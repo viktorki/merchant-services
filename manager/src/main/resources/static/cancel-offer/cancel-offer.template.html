@@ -1,14 +1,14 @@
 <div class="container-fluid">
   <div class="row justify-content-md-center">
-    <div class="col col-md-7">
+    <div class="col col-md-7 alert alert-danger">
       Are you sure you want to cancel this offer?
     </div>
   </div>
   <div class="row justify-content-md-center">
     <div class="col col-md-7">
-      <div class="form-group">
-        <a href="#!/" class="btn btn-default">Cancel</a>
-        <button ng-click="$ctrl.cancelOffer()" class="btn btn-primary">Confirm</button>
+      <div class="form-group float-right">
+        <a href="#!/" class="btn btn-default"><i class="fas fa-arrow-left"></i> Back</a>
+        <button ng-click="$ctrl.cancelOffer()" class="btn btn-danger">Confirm</button>
       </div>
     </div>
   </div>

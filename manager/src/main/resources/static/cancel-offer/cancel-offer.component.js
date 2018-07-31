@@ -7,8 +7,9 @@ angular.
     controller: ['$routeParams', '$location', 'Offer',
       function CancelOfferController($routeParams, $location, Offer) {
         this.cancelOffer = function() {
-		  Offer.delete({ id: $routeParams.id });
-		  $location.path('/');
+		  Offer.delete({ id: $routeParams.id }, function() {
+		    $location.path('/');
+		  });
 		};
       }
     ]
